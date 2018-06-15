@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="plugin.video.sky.sports.news" name="Sky Sports News" version="1.0.0" provider-name="Arber">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>Watch Videos From Sky Sports News</summary>
+        <description>Watch a wide selection of videos from Sky Sports News (skysports.com)</description>
+		<disclaimer lang="en">The author is not responsible for the media you find in this add-on.</disclaimer>
+    </extension>
+
+</addon>
+
+<addon id="repository.arber" name="Arber Repo" version="1.0.0" provider-name="Arber">
+	<extension point="xbmc.addon.repository" name="Arber Repository">
+		<info compressed="false">http://raw.github.com/ArberDev/repository.arber/master/addons.xml</info>
+		<checksum>http://raw.github.com/ArberDev/repository.arber/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/ArberDev/repository.arber/master/zips</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Arber's Repository</summary>
+		<description>Download and install add-ons from Arber's Repository.</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+</addons>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="Quality">
+		<setting id="quality" type="enum" label="Playback Quality" lvalues="1080p|720p|360p|180p" default="0" />
+	</category>
+</settings>
