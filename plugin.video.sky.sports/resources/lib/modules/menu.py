@@ -29,7 +29,7 @@ import xbmcplugin
 
 base_url     = 'http://www.skysports.com/watch/video/sports/%s'
 featured_url = 'http://www.skysports.com/watch/video'
-base_img     = 'special://home/addons/plugin.video.sky.sports.news/icon.png'
+base_img     = 'special://home/addons/plugin.video.sky.sports/icon.png'
 
 def main():
 	common.add_dir( 'Featured',     featured_url,              1, base_img )

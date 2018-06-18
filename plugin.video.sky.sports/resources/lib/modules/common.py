@@ -26,10 +26,10 @@ import xbmcaddon
 import xbmcgui
 import xbmcplugin
 
-fanart   = 'special://home/addons/plugin.video.sky.sports.news/fanart.jpg'
-base_img = 'special://home/addons/plugin.video.sky.sports.news/resources/img/%s.png'
+fanart   = 'special://home/addons/plugin.video.sky.sports/fanart.jpg'
+base_img = 'special://home/addons/plugin.video.sky.sports/resources/img/%s.png'
 
-get_quality = xbmcaddon.Addon('plugin.video.sky.sports.news').getSetting('quality')
+get_quality = xbmcaddon.Addon('plugin.video.sky.sports').getSetting('quality')
 if get_quality == '0': quality = '3600'
 if get_quality == '1': quality = '2200'
 if get_quality == '2': quality = '600'

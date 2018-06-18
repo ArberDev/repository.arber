@@ -16,7 +16,7 @@
 
 </addon>
 
-<addon id="plugin.video.sky.sports.news" name="Sky Sports News" version="1.0.0" provider-name="Arber">
+<addon id="plugin.video.sky.sports" name="Sky Sports" version="1.0.0" provider-name="Arber">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
     </requires>
@@ -25,8 +25,8 @@
     </extension>
     <extension point="xbmc.addon.metadata">
         <platform>all</platform>
-        <summary>Watch Videos From Sky Sports News</summary>
-        <description>Watch a wide selection of videos from Sky Sports News (skysports.com)</description>
+        <summary>Watch videos from skysports.com</summary>
+        <description>Watch a wide selection of videos from skysports.com</description>
 		<disclaimer lang="en">The author is not responsible for the media you find in this add-on.</disclaimer>
     </extension>
 
