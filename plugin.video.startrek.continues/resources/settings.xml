@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="Library">
+		<setting id="library.folder" label="Library Folder" type="folder" default="special://userdata/addon_data/plugin.video.startrek.continues/library/" />
+	</category>	
+</settings>
