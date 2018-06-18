@@ -40,7 +40,7 @@ def main():
 def replays(url):
 	link  = common.open_url(url)
 	link  = link
-	match = re.compile('<dt class=".+?"><time datetime="(.+?)T.+?</time><br class=".+?">\n</dt>\n<dd class=".+?">\n<a href="https://www.fite.tv/watch/.+?/(.+?)/" class=".+?" data-thumb="(.+?)"><span class="event-title">(.+?)</span><span class="event-genres">.+?</span></a>\n</dd>\n<dd class=".+?">\n<a href=".+?" class="event-link price-container"><span class="event-price">Free</span>').findall(link)
+	match = re.compile('<time class="event-time-time" datetime="(.+?)T.+?" data-format=.+?<br>\n</td>\n<td class="event-info">\n<a href="https://www\.fite\.tv/watch/.+?/(.+?)/" class="event-link" data-thumb="(.+?)">\n<span class="event-title">(.+?)</span>\n<span class="event-genres">\n<span class="hidden-xs">.+?</span>\n<span class="visible-xs">.+?</span>\n</span>\n</a>\n</td>\n<td class="fit" nowrap>\n<a href=".+?" class="event-link price-container"><span class="hidden-xs event-price">Free</span>').findall(link)
 	for date,id,img,title in match:
 		img   = img.replace('240x360','800x1280')
 		title = '[B]%s[/B] | %s' % (date,title)
