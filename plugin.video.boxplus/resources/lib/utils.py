@@ -1,5 +1,6 @@
 '''
-	Fite.tv Add-on
+	Box Plus Network Add-on
+	Copyright (C) 2018 Arber
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -15,21 +16,15 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import os
-import re
-import string
 import sys
 import urllib
 import urllib2
-import xbmc
-import xbmcaddon
-import xbmcgui
 import xbmcplugin
+import xbmcgui
 
-fanart   = 'special://home/addons/plugin.video.fite.tv/fanart.jpg'
-base_img = 'special://home/addons/plugin.video.fite.tv/resources/img/%s.png'
+fanart = 'special://home/addons/plugin.video.boxplus/fanart.jpg'
 
-def play(url):
+def play_stream(url):
 	resolved = url
 	item     = xbmcgui.ListItem(path=resolved)
 	xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
@@ -42,27 +37,12 @@ def open_url(url):
 	response.close()
 	return link
 	
-def add_link(name,url,mode,iconimage):
-	u   = sys.argv[0] + "?url=" + urllib.quote_plus(url) + "&mode=" + str(mode) + "&name=" + urllib.quote_plus(name)
+def add_stream(name, url, mode, iconimage):
+	u   = sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+urllib.quote_plus(mode)+"&name="+urllib.quote_plus(name)
 	ok  = True
 	liz = xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
-	liz.setProperty('fanart_image', iconimage)
+	liz.setProperty('fanart_image', fanart)
 	liz.setInfo('video', {'Title': name})
 	liz.setProperty("IsPlayable","true")
 	ok  = xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
 	return ok
-
-def add_dir(name,url,mode,iconimage):
-	u   = sys.argv[0] + "?url=" + urllib.quote_plus(url) + "&mode=" + str(mode) + "&name=" + urllib.quote_plus(name)
-	ok  = True
-	liz = xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
-	liz.setProperty('fanart_image', iconimage)
-	ok  = xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
-	return ok
-	
-def get_stream(url):
-	link  = open_url(url)
-	link  = link
-	match = re.compile('playlist:\[\{sources:\[\{file:"(.+?)"\}\]').findall(link)
-	for url in match:
-		play(url)
