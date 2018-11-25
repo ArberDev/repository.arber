@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.audio.funkstation" name="The FunkStation" version="1.0.0" provider-name="Arber">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>audio</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>Listen to The FunkStation</summary>
+        <description>Listen to the live feed of The FunkStation from thefunkstation.com.</description>
+		<disclaimer lang="en">The author is not responsible for the media you find in this add-on.</disclaimer>
+    </extension>
+	
+</addon>
