@@ -16,6 +16,7 @@
 '''
 
 import common
+import json
 import os
 import re
 import string
@@ -38,16 +39,43 @@ def main():
 	common.add_dir('Traditional',base_url % 'traditional-martial-arts',2,base_img)
 		
 def replays(url):
+	items = []
 	link  = common.open_url(url)
-	link  = link
-	match = re.compile('<time class="event-time-time" datetime="(.+?)T.+?" data-format=.+?<br>\n</td>\n<td class="event-info">\n<a href="https://www\.fite\.tv/watch/.+?/(.+?)/" class="event-link" data-thumb="(.+?)">\n<span class="event-title">(.+?)</span>\n<span class="event-genres">\n<span class="hidden-xs">.+?</span>\n<span class="visible-xs">.+?</span>\n</span>\n</a>\n</td>\n<td class="fit" nowrap>\n<a href=".+?" class="event-link price-container"><span class="hidden-xs event-price">Free</span>').findall(link)
-	for date,id,img,title in match:
-		img   = img.replace('240x360','800x1280')
-		title = '[B]%s[/B] | %s' % (date,title)
-		url   = 'https://www.fite.tv/embed/v1/%s/' % id
-		common.add_link(title,url,1,img)
+	link  = link.replace('\n','')
+	match = re.compile('<script type="application/ld\+json">(.+?)</script>').findall(link)
+	for data in match: 
+		if 'location' not in data:
+			pass
+		else:
+			data = str(data)
+			data = json.loads(data)
+			for i in data:
+				try: url = i['offers']['url']
+				except: pass
+
+				try: date = i['offers']['validFrom'][:10]
+				except: pass
+				
+				try: price = i['offers']['price']
+				except: pass
+				
+				try: img = i['image']
+				except: pass
+				
+				try: title = i['name']
+				except: pass
+				
+				if url not in items:
+					items.append(url)
+					title = '[B]%s[/B] | %s' % (date, title)
+					if price == '0':
+						common.add_link(title,url,1,img)
+					else:
+						pass
+				else:
+					pass
 	
-	more = re.compile('<a href="(.+?)">Show more').findall(link)
+	more = re.compile('<div class="show-more"><a href="(.+?)">Show more').findall(link)
 	for url in more:
 		img   = base_img
 		title = '[I]More...[/I]'

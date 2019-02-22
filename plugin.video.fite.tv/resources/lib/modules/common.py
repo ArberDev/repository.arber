@@ -62,7 +62,12 @@ def add_dir(name,url,mode,iconimage):
 	
 def get_stream(url):
 	link  = open_url(url)
-	link  = link
-	match = re.compile('playlist:\[\{sources:\[\{file:"(.+?)"\}\]').findall(link)
-	for url in match:
-		play(url)
+	link  = link.replace('\n','')
+	match = re.compile("'video_id':'(.+?)'").findall(link)
+	for id in match:
+		url   = 'https://www.fite.tv/embed/v1/%s/' % id
+		link  = open_url(url)
+		link  = link
+		match = re.compile('playlist:\[\{sources:\[\{file:"(.+?)"\}\]').findall(link)
+		for url in match:
+			play(url)
