@@ -53,7 +53,7 @@ def replays(url):
 				try: url = i['offers']['url']
 				except: pass
 
-				try: date = i['offers']['validFrom'][:10]
+				try: date = i['startDate'][:10]
 				except: pass
 				
 				try: price = i['offers']['price']
